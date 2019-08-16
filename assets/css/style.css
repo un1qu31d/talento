@@ -250,7 +250,7 @@ input {
     .component-links li {
       margin: 8px;
     }
-      .component-links .links__link {
+      .links__item {
         display: grid;
         grid-gap: 4px;
         grid-auto-flow: column;
@@ -259,16 +259,16 @@ input {
         border-bottom: 1px solid transparent;
         color: #333;
       }
-      .component-links .links__link:hover, .component-links .links__link:focus {
+      .links__item.status--active, .links__item:hover, .links__item:focus {
         border-bottom-color: #333;
       }
-        .component-links .links__link .icon {
+        .links__item .icon {
           width: 16px;
           height: 16px;
           background-color: #d3d3d3;
           transition: transform 240ms ease-in-out;
         }
-        .component-links .links__link:hover .icon {
+        .links__item.status--active .icon, .links__item:hover .icon, .links__item:focus .icon {
           background-color: #fdcf26;
           transform: rotateZ(90deg);
         }
@@ -283,36 +283,36 @@ input {
     .component-navigator li {
       padding: 0 8px;
     }
-    .component-navigator li:hover {
+    .navigator__item.status--active, .navigator__item:hover {
       color: #fdcf26;
     }
-      .component-navigator .navigator__item {
+      .navigator__item {
         display: grid;
         grid-gap: 4px;
         align-items: center;
       }
-      .component-page.status--collapse-side .component-navigator .navigator__item {
+      .component-page.status--collapse-side .navigator__item {
         justify-content: center;
         justify-items: center;
       }
-      .component-page:not(.status--collapse-side) .component-navigator .navigator__item {
+      .component-page:not(.status--collapse-side) .navigator__item {
         grid-template-columns: max-content 1fr;
       }
-        .component-navigator .navigator__item__icon {
+        .navigator__item__icon {
           width: 32px;
           height: 32px;
         }
-        .component-navigator li:hover .navigator__item__icon {
+        .navigator__item.status--active .navigator__item__icon, .navigator__item:hover .navigator__item__icon {
           background-color: #fdcf26;
         }
-        .component-page:not(.status--collapse-side) .component-navigator .navigator__item__icon {
+        .component-page:not(.status--collapse-side) .navigator__item__icon {
           width: 16px;
           height: 16px;
         }
-        .component-navigator .navigator__item__name {
+        .navigator__item__name {
           text-transform: uppercase;
         }
-        .component-page.status--collapse-side .component-navigator .navigator__item__name {
+        .component-page.status--collapse-side .navigator__item__name {
           font-size: 0.4em;
         }
 @media (min-width: 768px) {
@@ -333,6 +333,7 @@ input {
       background-color: #e9e9e9;
     }
 }
+/* COMPONENT VIDEOS */
 .component-videos {
   
 }
@@ -344,6 +345,21 @@ input {
       position: relative;
       padding-top: 56.25%;
       height: 0;
+    }
+    .videos__item:hover::after {
+      content: '';
+      cursor: pointer;
+      position: absolute;
+      top: calc(50% - 16px);
+      right: calc(50% - 16px);
+      bottom: calc(50% - 16px);
+      left: calc(50% - 16px);
+      width: 32px;
+      height: 32px;
+      background-color: #fff;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+      -webkit-mask-image: url('../img/icon--play.svg');
     }
       .videos__item__image {
         position: absolute;
@@ -380,8 +396,9 @@ input {
         bottom: 0;
         left: 0;
         margin: 16px;
-        height: 3.6em;
+        height: 1.2em;
         overflow: hidden;
+        text-align: center;
         line-height: 1.2em;
         color: #fff;
       }
@@ -414,6 +431,9 @@ input {
       grid-column-end: span 2;
       grid-row-end: span 2;
     }
+      .component-videos.theme--featured .videos__item:nth-child(5n+1) .videos__item__title {
+        height: 3.6em;
+      }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .videos__items {
@@ -426,9 +446,15 @@ input {
     .component-videos.theme--featured .videos__item:nth-child(5n+1), .component-videos.theme--featured .videos__item:nth-child(5n+2) {
       grid-column-end: span 3;
     }
+    .component-videos.theme--featured .videos__item:nth-child(5n+1) .videos__item__title, .component-videos.theme--featured .videos__item:nth-child(5n+2) .videos__item__title {
+      height: 2.4em;
+    }
 }
 @media (max-width: 767px) {
   .videos__items {
     grid-gap: 16px;
   }
+      .videos__item__title {
+        height: 2.4em;
+      }
 }
