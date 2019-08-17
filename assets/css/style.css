@@ -84,7 +84,7 @@ input {
   grid-template-rows: max-content 1fr;
 }
 .component-page.status--extended-side {
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 240px 1fr;
 }
   .page__top {
     grid-column-end: span 2
@@ -337,6 +337,7 @@ input {
           height: 24px;
         }
         .component-page.status--extended-side .navigator__item__name {
+          text-align: start;
           font-size: 1em;
         }
 }
@@ -472,7 +473,7 @@ input {
         overflow: hidden;
         line-height: 1.2em;
       }
-      .component-videos.theme--featured .videos__item__title {
+      .component-videos.theme--featured .videos__item__title, .component-videos.theme--trending .videos__item__title {
         position: absolute;
         right: 0;
         bottom: 0;
@@ -502,9 +503,11 @@ input {
         color: #d3d3d3;
       }
 @media (min-width: 1024px) {
-  .component-videos.theme--featured .videos__items {
+  .component-videos.theme--featured .videos__items, .component-videos.theme--trending .videos__items {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 9px 16px;
+  }
+  .component-videos.theme--featured .videos__items {
   }
     .component-videos.theme--featured .videos__item:nth-child(5n+1) {
       grid-column-end: span 2;
@@ -512,6 +515,26 @@ input {
     }
       .component-videos.theme--featured .videos__item:nth-child(5n+1) .videos__item__title {
         height: 3.6em;
+      }
+  .component-videos.theme--trending .videos__items {
+  }
+    .component-videos.theme--trending .videos__item:nth-child(10n+2) {
+      grid-row-end: span 2;
+    }
+    .component-videos.theme--trending .videos__item:nth-child(10n+5) {
+      grid-row-end: span 2;
+    }
+    .component-videos.theme--trending .videos__item:nth-child(10n+6) {
+      grid-column-end: span 2;
+      grid-row-end: span 2;
+    }
+    .component-videos.theme--trending .videos__item:nth-child(10n+9) {
+      grid-column-end: span 2;
+    }
+      .component-videos.theme--trending .videos__item:nth-child(10n+2) .videos__item__image, .component-videos.theme--trending .videos__item:nth-child(10n+5) .videos__item__image, .component-videos.theme--trending .videos__item:nth-child(10n+9) .videos__item__image {
+        position: relative;
+        padding-top: 0;
+        height: 100%;
       }
 }
 @media (min-width: 768px) {
